@@ -1,12 +1,19 @@
+
 body {
 	min-width: 960px;
 	margin: 0;
+	padding: 0;
 	font-family: 'PT Sans', Arial, sans-serif;
 	font-size: 13px;
 	line-height: 24px;
 	font-weight: 400;
 	color: #000000;
 	background-color: #ffffff;
+}
+
+html {
+	padding: 0;
+	margin: 0;
 }
 
 a { 
@@ -440,66 +447,6 @@ a {
 	font-weight: bold;
 }
 
-.old-price { /* кнопка со старой зачеркнутой ценой на карточках товаров*/
-	text-decoration: line-through;
-	color: #a9a9a9;
-	width: 67px;
-}
-
-.red-price-button { /* красная цена кнопка на карточках товара(должна быть стрелкой далее...)*/
-	background-color: #ee3643; 
-	color: #ffffff;
-	width: 65px;
-	text-align: center;
-}
-
-.buy-button a { /* кнопка купить на карточках товара*/
-	font-family: 'Cuprum', Arial, sans-serif;
-	font-style: normal;
-	color: #ffffff;
-	font-size: 14px;
-	line-height: 18px;
-}
-
-.buy-button { /* контейнер для зеленой кнопки*/
-	width: 135px;
-	background-color: #63a63e;
-	border-radius: 3px;
-	text-align: center;
-	box-shadow: inset 0 -3px 0 0 #367315;
-}
-
-.buy-button:hover { /*наведеие на кнопку купить на карточках товара*/
-	background-color:#5fbb2d;
-}
-
-.buy-button:active { /*активная кнопка купить на карточках товара*/
-	background-color: #518534;
-	box-shadow: none;
-}
-
-.inbookmarks { /*кнопка "в закладки" на обороте карточек товаров */
-font-family: 'Cuprum', Arial, sans-serif;
-background-color: #ffffff;
-width: 135px;
-border: 3px solid #63a63e;
-color: #32425c;
-border-radius: 3px;
-}
-
-.inbookmarks:hover { /*наведение на кнопку в закладки на карточках товаров */
-	background-color: #ffffff;
-	width: 135px;
-	border: 3px solid #32425c;
-	color: #32425c;
-}
-
-.inbookmarks:active { /*активная кнопка в закладки на карточках товаров*/
-	background-color: #ffffff;
-	width: 135px;
-	border: 3px solid rgba(50, 66, 92, 0.3);
-	color: rgba(50, 66, 92, 0.3);
-}
 
 .manufacturer-list {
 	padding: 0;
@@ -542,15 +489,110 @@ border-radius: 3px;
 
 }
 
-.catalog-item { /* убирает маркеры у списка с товара в кталоге*/
+.catalog-item { 
+	position: relative;
+	display: inline-block;
 	list-style: none;
 	border: solid 1px #eaeaea;
 	width: 220px;
+	margin-right: 20px;
 	margin-bottom: 20px;
+	line-height: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+.catalog-item .flag {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	width: 60px;
+	height: 60px;
+	text-indent: -1000px;
+	overflow: hidden;
+	z-index: 20;
+}
+
+.catalog-item .flag-new {
+	background: url("../img/new-flag.png") no-repeat 0 0;
+}
+
+.catalog-item .actions {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 218px;
+	height: 88px;
+	padding: 40px 0;
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 10;
+}
+
+.catalog-item .actions .buy-button,
+.catalog-item .actions .inbookmarks {
+	display: block;
+	width: 129px;
+	margin: 0 auto;
+	margin-bottom: 7px;
+	padding: 7px 0;
+	background-color: #63a63e;
+	border: 3px solid #63a63e;
+	border-bottom-color: #367315;
 }
 .catalog-item:hover { /* тень при наведении на карточку товара*/
 	box-shadow: 0 10px 25px 0 rgba(41, 52, 73, 0.5);
 }
+
+.catalog-item .image {
+	width: 218px;
+	height: 168px;
+}
+
+.catalog-item  .image img{
+	max-width: 100%;
+}
+
+.catalog-item .title {
+	font-size: 18px;
+	min-height: 40px;
+	padding: 0 25px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.catalog-item .old-price {
+	font-size: 17px;
+	min-height: 40px;
+	padding: 0 25px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	color:  #eaeaea;
+	text-decoration: line-through;
+}
+
+.catalog-item .red-price-button {
+	font-size: 17px;
+	position: relative;
+	width: 80px;
+	margin: 10px auto;
+	margin-bottom: 20px;
+	padding: 10px 30px;
+	color: #ffffff;
+	background: #ee3643;
+	background-radius: 3px;
+}
+
+.catalog-item .red-price-button:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: -20px;
+	width: 0;
+	height: 0;
+	border: 20px solid #ffffff;
+	border-left-color: #ee3643;
+}
+
+
 
 .servises p { /* стиль текста в блоках про сервис*/
 	font-size: 13px;
@@ -1044,7 +1086,7 @@ background-color: #32425c;
 	flex-wrap: wrap;
 	width: 700px;
 	min-height: 995px;
-	/**/
+	margin: 20px auto;
 }
 
 .catalog-perforators:nth-child(3n){
